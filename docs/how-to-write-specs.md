@@ -10,7 +10,7 @@ Product, development and QA share executable behaviour agreements in `features/<
 4. Run `to-tickets`. Both skills use the tracker configured at project setup.
 5. Use `tdd` to connect approved scenarios to the product through step bindings and implement the behaviour. QA verifies the same scenarios and looks for missing cases.
 
-Anyone discovering missing, ambiguous or changed behaviour at any stage brings it to the product owner; update scenarios after agreement.
+For violations of approved scenarios, record reproduction steps and scenario links in a bug ticket; fix with `tdd` and have QA verify, without reapproving behaviour. Missing, ambiguous or changed requirements go to the product owner; update scenarios after agreement.
 
 ## Specs and tickets
 
