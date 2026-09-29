@@ -30,23 +30,9 @@ flowchart TD
 
 The lasting specification stays in `features/<capability>/<slug>.feature`, versioned with the code. Feature descriptions preserve the product intent, `CONTEXT.md` preserves domain vocabulary, and ADRs preserve qualifying architectural decisions. Before temporary plans or tickets are deleted at feature merge, check that this lasting context is complete.
 
+## Getting started
 
-## Agent instructions: initialize a new project
-
-When asked to initialize a project from this template:
-
-1. Work in the target project directory. Copy `AGENTS.md` and `docs/` from the template if needed, preserving existing project instructions. Read `AGENTS.md` and use `tree docs` to discover relevant guidance
-2. Initialize Git if the target is not already a repository, following the branch policy in [about-project.md](docs/about-project.md)
-3. Check which required skills are available to the active agent. Install missing Matt Pocock engineering skills, including `setup-matt-pocock-skills` and their supporting skills:
-
-   ```sh
-   npx skills@latest add mattpocock/skills
-   ```
-
-   Follow the [upstream installation instructions](https://github.com/mattpocock/skills#installation-30-second-setup) for the active agent and select the skills referenced by the project documents
-4. Run `/setup-matt-pocock-skills` once in the target project and follow its instructions. It generates tracker, domain and applicable triage configuration under `docs/agents/`. These files belong to the initialized project and are intentionally absent from the reusable template
-5. Agree the project purpose, stack and scenario runner with the user. Fill in [about-project.md](docs/about-project.md) with those decisions and actual commands; identify anything not yet available instead of inventing it
-6. Verify that required skills are available, generated configuration exists and documented commands work where the project supports them. Report unresolved setup items, then use the [feature workflow](docs/how-to-write-specs.md) for product work
+Ask your agent to follow [the project initialization guide](docs/how-to-initialize-project.md) for a new or existing project.
 
 ## Sources and acknowledgements
 
