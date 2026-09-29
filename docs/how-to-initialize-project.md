@@ -1,18 +1,24 @@
 # How to initialize a project
 
-1. Inspect the target's instructions, code, tests and existing skill configuration. Choose **greenfield** for a new product or **brownfield** for an existing one. Reuse decisions already agreed with the user.
-2. Ensure Matt Pocock Skills is installed for the participating agents and configured for this repository using the [upstream instructions](https://github.com/mattpocock/skills). Reuse existing installation and configuration; installed skills alone do not mean the repository is configured.
-3. Merge SiloZilla's `AGENTS.md` guidance and instruction guides into the target, preserving project-specific material. Initialize Git if needed. Ensure each participating agent loads the shared instructions.
+## Inspect and agree
 
-## Greenfield: new product
+Inspect the target's instructions, code, tests and existing skill configuration. Choose the applicable path below and agree the scope and completion criteria before making changes. Reuse decisions already agreed with the user.
 
-Agree the product purpose, stack, layout and scenario runner; fill `about-project.md` with those decisions and actual commands.
+### Greenfield: new product
 
-## Brownfield: existing product
+Agree the product purpose, stack, layout, scenario runner and base branch for changes and PRs.
 
-Agree a staged adoption plan. Retain the stack, layout and regressions unless their changes are agreed. A move into `src/` is a separate migration decision, not a framework requirement. Fill `about-project.md` with the existing stack, runner and verified commands.
+### Brownfield: existing product
+
+Agree a staged adoption plan and confirm the base branch for changes and PRs. Retain the stack, layout and regressions unless their changes are agreed. A move into `src/` is a separate migration decision, not a framework requirement.
 
 Distinguish observed behaviour from approved requirements; bring conflicts to the user. Adopt executable scenarios one capability at a time, preserving distinct regression coverage and context before retiring old material.
+
+## Apply the agreed setup
+
+1. Initialize Git if needed. Ensure Matt Pocock Skills is installed for the participating agents and configured for this repository using the [upstream instructions](https://github.com/mattpocock/skills). Reuse existing installation and configuration; installed skills alone do not mean the repository is configured.
+2. Merge SiloZilla's `AGENTS.md` guidance and instruction guides into the target, preserving project-specific material. Ensure each participating agent loads the shared instructions.
+3. Fill `about-project.md` with the agreed project settings and verified commands.
 
 ## Verify setup
 

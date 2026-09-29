@@ -39,5 +39,5 @@ Ask your agent to follow [the project initialization guide](docs/how-to-initiali
 - [Matt Pocock Skills](https://github.com/mattpocock/skills) supplies the engineering workflows this framework builds on
 - [FerroxLabs/agents-md](https://github.com/FerroxLabs/agents-md) containing valuable instructions, copyright Sean Donahoe
 - [Karpathy-inspired coding guidelines](https://github.com/multica-ai/andrej-karpathy-skills), for simplicity and surgical-changes rules
-- [Rinat Abdullin’s materials](https://abdullin.com/) are the source of the `AICODE-` convention, executable specs and many others the repo
+- [Rinat Abdullin’s materials](https://abdullin.com/) are the source of the `AICODE-` convention, executable specs and other ideas used here
 

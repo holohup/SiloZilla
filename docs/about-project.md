@@ -9,5 +9,6 @@ Fill in per project. Agents read this for the stack and the commands; everything
 - Step bindings live in: `___`
 - Unit test command, if applicable: `___`
 - Type check / lint: `___`
+- Base branch for changes and PRs: ___
 
-Never change dev or main directly: pull latest dev and branch from it. No commit to shared branches, push or PR before the user approves; PRs target dev unless told otherwise.
+Branch from the latest agreed base branch; target PRs there unless told otherwise. Never commit directly to shared branches. Obtain user approval before pushing or opening PRs.
