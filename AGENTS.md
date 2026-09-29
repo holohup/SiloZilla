@@ -1,4 +1,4 @@
-Architecture and core principles are defined in `docs`. At the start, run `tree docs`. Use the filenames to identify and read the documents relevant to the task before proceeding.
+Use Matt Pocock Skills as the engineering foundation, including its workflows, document conventions and project configuration. At the start, run `tree docs`. Use the filenames to identify and read the documents relevant to the task before proceeding.
 
 Behaviour lives in 'features/**/*.feature'. Those files are the source of truth and belong to the user. Do not tree or read them up front: 'tree features' only when checking a new scenario against existing ones, implementing a ticket, or reviewing. Never create, edit or delete a scenario to make a test pass. 
 
