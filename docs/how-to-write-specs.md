@@ -4,6 +4,8 @@ Product, development and QA share executable behaviour agreements in `features/<
 
 ## Workflow
 
+Describe and agree the scope and completion criteria of migrations and other project/process changes via `grill-with-docs` (`grilling` + `domain-modeling`) before implementation. Pause affected work and resume grilling when conceptual questions arise.
+
 1. Grill the product owner using `domain-modeling`. Write the agreed intent and examples as `.feature` files and obtain the product owner's approval.
 2. Grill the developer against the approved features: architecture, testing interfaces, task breakdown and implementation details as needed. Unit-test proposals follow `docs/how-to-write-code.md`.
 3. Run `to-spec` after both discussions, using its normal Markdown format. This is a temporary planning snapshot; approved `.feature` files remain authoritative for product behaviour.
@@ -14,7 +16,7 @@ For violations of approved scenarios, record reproduction steps and scenario lin
 
 ## Specs and tickets
 
-Follow the installed skills and configured tracker for document structure and storage. Link approved scenarios from the Markdown spec. For behaviour changes, ticket acceptance criteria are the approved E2E scenarios: link their `.feature` files and identify the relevant scenarios. For behaviour-preserving refactors, follow `to-tickets` without requiring new scenarios.
+Follow the installed skills and configured tracker for document structure and storage. Keep one maintained copy of specs and tickets in that tracker; link to it elsewhere. Plans and tickets may precede detailed scenarios; before implementing product behaviour, link the approved `.feature` files and relevant scenarios as ticket acceptance criteria. Link them from the Markdown spec too. For behaviour-preserving refactors, follow `to-tickets` without requiring new scenarios.
 
 Show specs and tickets to the user before publishing and obtain approval. Ticket publication does not create or rewrite behaviour. When reading a ticket, also read every `.feature` file it links.
 
