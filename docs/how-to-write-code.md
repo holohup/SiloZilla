@@ -13,7 +13,7 @@ The minimum code that solves the stated problem, changed in the smallest reviewa
 
 ## Testing
 
-Design the architecture to support black-box E2E tests through the product's public entry points, following `docs/how-to-write-specs.md`. Use the `tdd` skill for test design and implementation.
+Design the architecture to support the product E2E scenarios.
 
 Add unit tests only where needed, such as for complex algorithms or method edge cases. Before writing them, explain why they are needed, identify the interface and specific cases to test, and obtain the user's explicit approval. Approval covers that scope; obtain further approval before expanding it.
 
