@@ -1,66 +1,40 @@
 # How to add a new feature
 
-You drive this workflow. In one planning conversation, invoke `/grill-with-docs` → `/to-spec` → `/to-tickets`, agreeing each stage before continuing. Then generate a handoff, open a fresh session yourself, and give the new agent that handoff with `/implement-spec`.
+You invoke each skill yourself. The examples use slash syntax; in Codex CLI or IDE, select the skill through `/skills` or use `$skill-name`.
 
-Submit each prompt below yourself. The examples use slash syntax. In Codex CLI or IDE, select the skill through `/skills` or mention it as `$skill-name` instead.
+For an unconfigured project, follow [project initialization](how-to-initialize-project.md) first. This repository's additions to the skill workflows live in [how to write specs](how-to-write-specs.md) and [how to write code](how-to-write-code.md).
 
-Before starting, follow [project initialization](how-to-initialize-project.md) if the project is not configured. The planning and implementation agents need the skills and the repository's tracker configuration; run `/setup-matt-pocock-skills` if that configuration is missing.
+## 1. Plan in one conversation
 
-## 1. Agree the feature with grill-with-docs
+Invoke these one at a time in the same conversation:
 
 ```text
-/grill-with-docs
-Help me design <feature>. Follow docs/how-to-write-specs.md for the product-owner and developer discussions.
+/grill-with-docs <feature idea>
 ```
-
-Finish with agreed behaviour, scope, implementation decisions and testing seams. Follow [how to write specs](how-to-write-specs.md) for scenario ownership and approval, and [how to write code](how-to-write-code.md) for any unit-test approval. Record those approvals where the next agent can find them.
-
-`grill-with-docs` already combines `grilling` and `domain-modeling`, including glossary updates and ADRs when warranted.
-
-## 2. Capture the agreement with to-spec
 
 ```text
 /to-spec
-Synthesize the agreed feature. Link the approved scenarios using docs/how-to-write-specs.md. Show me the complete draft for approval before publishing.
 ```
-
-`to-spec` synthesizes the conversation rather than conducting another interview; it includes confirmation of the testing seams. Resolve open design questions in the grilling stage before proceeding. Keep the resulting spec in the configured tracker and retain its path or URL for the next stage.
-
-## 3. Break the spec into tickets with to-tickets
 
 ```text
 /to-tickets <spec path or URL>
-Link the relevant approved scenarios as each ticket's acceptance criteria, following docs/how-to-write-specs.md. Show me the complete ticket drafts before publishing.
 ```
 
-The skill handles vertical slices, blocking relationships, breakdown approval and publication. Finish with published, approved tickets associated with the spec, each small enough for a fresh context window. Keep the spec and tickets in their configured tracker; reference them elsewhere.
+## 2. Generate the handoff
 
-## 4. Generate the implementation handoff
-
-Once the spec and tickets are ready, ask the planning agent to prepare the handoff with this prompt:
+In the planning conversation, submit:
 
 ```text
 /handoff
-The next session will implement the agreed feature using implement-spec.
-
-Include the absolute repository path and context pointers to the published spec, its tickets, the tracker configuration, relevant approved scenarios, and any glossary or ADR decisions needed for this feature.
-
-Preserve decisions and user approvals that exist only in this conversation, especially the agreed testing seams, any approved unit-test scope, and permissions already granted for pushing or opening a PR. Distinguish unresolved questions from settled decisions. Include the agreed base branch and verified starting commit for the final review, and any existing implementation branch or work to resume.
-
-In Suggested skills, list only implement-spec.
-
-Return the handoff's absolute path and flag anything still missing for implementation.
+The next session will use implement-spec to implement <spec path or URL>.
+Suggested skills: implement-spec only.
 ```
 
-Resolve implementation blockers with the planning agent before moving to a fresh session. The handoff should carry context that would otherwise be lost, with pointers to the maintained artifacts.
+## 3. Open a fresh session
 
-## 5. Open a fresh session and give it the handoff
-
-You open a new agent session in the repository with a clean context. Give it the handoff by submitting this prompt yourself, replacing the placeholder with the path returned above. In Codex CLI or IDE, use `$implement-spec` on the first line.
+Open a new agent session yourself in the same repository with a clean context. Give it this prompt using the handoff path returned above:
 
 ```text
 /implement-spec
-Read <absolute handoff path> and implement the linked spec and its associated tickets. Follow the repository instructions and the decisions and approvals referenced in the handoff.
+Read <absolute handoff path>.
 ```
-
-`implement-spec` owns implementation orchestration and already delegates to `tdd` and `code-review`; keep their instructions in those skills. `handoff` already saves outside the repo and references existing artifacts instead of copying them. Repository approval rules still apply; handing off implementation does not grant new permissions.
