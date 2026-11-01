@@ -2,6 +2,8 @@
 
 Use one planning conversation for `/grill-with-docs` → `/to-spec` → `/to-tickets`, then hand implementation to an agent with a clean context. Run each stage after the previous one is agreed.
 
+These workflow entry points, including `handoff` and `implement-spec`, declare `disable-model-invocation: true` in their installed skills. Invoke each yourself; a suggestion inside a handoff is not an invocation. The examples below use slash syntax. In Codex CLI or IDE, select the skill through `/skills` or mention it as `$skill-name` instead.
+
 Before starting, follow [project initialization](how-to-initialize-project.md) if the project is not configured. The planning and implementation agents need the skills and the repository's tracker configuration; run `/setup-matt-pocock-skills` if that configuration is missing.
 
 ## 1. Agree the feature with grill-with-docs
@@ -45,7 +47,7 @@ Include the absolute repository path and context pointers to the published spec,
 
 Preserve decisions and user approvals that exist only in this conversation, especially the agreed testing seams, any approved unit-test scope, and permissions already granted for pushing or opening a PR. Distinguish unresolved questions from settled decisions. Include the agreed base branch and verified starting commit for the final review, and any existing implementation branch or work to resume.
 
-Use implement-spec as the sole entry in Suggested skills. Its delegated skills remain its responsibility.
+In Suggested skills, identify implement-spec as the skill the user must explicitly invoke in the fresh session. Its delegated skills remain its responsibility.
 
 Return the handoff's absolute path and flag anything still missing for implementation.
 ```
@@ -54,10 +56,11 @@ Resolve implementation blockers before starting the new agent. The handoff shoul
 
 ## 5. Start an agent with a clean context
 
-Start a fresh agent in the repository and give it this prompt, replacing the placeholder with the path returned above:
+Start a fresh agent in the repository and explicitly invoke the skill with this prompt, replacing the placeholder with the path returned above. In Codex CLI or IDE, use `$implement-spec` on the first line.
 
 ```text
-Read <absolute handoff path> and use implement-spec to implement the linked spec and its associated tickets. Follow the repository instructions and the decisions and approvals referenced in the handoff.
+/implement-spec
+Read <absolute handoff path> and implement the linked spec and its associated tickets. Follow the repository instructions and the decisions and approvals referenced in the handoff.
 ```
 
 `implement-spec` owns implementation orchestration and already delegates to `tdd` and `code-review`; keep their instructions in those skills. `handoff` already saves outside the repo and references existing artifacts instead of copying them. Repository approval rules still apply; handing off implementation does not grant new permissions.
