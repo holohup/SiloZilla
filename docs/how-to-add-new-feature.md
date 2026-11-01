@@ -1,8 +1,8 @@
 # How to add a new feature
 
-Use one planning conversation for `/grill-with-docs` → `/to-spec` → `/to-tickets`, then hand implementation to an agent with a clean context. Run each stage after the previous one is agreed.
+You drive this workflow. In one planning conversation, invoke `/grill-with-docs` → `/to-spec` → `/to-tickets`, agreeing each stage before continuing. Then generate a handoff, open a fresh session yourself, and give the new agent that handoff with `/implement-spec`.
 
-These workflow entry points, including `handoff` and `implement-spec`, declare `disable-model-invocation: true` in their installed skills. Invoke each yourself; a suggestion inside a handoff is not an invocation. The examples below use slash syntax. In Codex CLI or IDE, select the skill through `/skills` or mention it as `$skill-name` instead.
+Submit each prompt below yourself. The examples use slash syntax. In Codex CLI or IDE, select the skill through `/skills` or mention it as `$skill-name` instead.
 
 Before starting, follow [project initialization](how-to-initialize-project.md) if the project is not configured. The planning and implementation agents need the skills and the repository's tracker configuration; run `/setup-matt-pocock-skills` if that configuration is missing.
 
@@ -37,7 +37,7 @@ The skill handles vertical slices, blocking relationships, breakdown approval an
 
 ## 4. Generate the implementation handoff
 
-In the planning conversation, use this prompt after the spec and tickets are ready:
+Once the spec and tickets are ready, ask the planning agent to prepare the handoff with this prompt:
 
 ```text
 /handoff
@@ -47,16 +47,16 @@ Include the absolute repository path and context pointers to the published spec,
 
 Preserve decisions and user approvals that exist only in this conversation, especially the agreed testing seams, any approved unit-test scope, and permissions already granted for pushing or opening a PR. Distinguish unresolved questions from settled decisions. Include the agreed base branch and verified starting commit for the final review, and any existing implementation branch or work to resume.
 
-In Suggested skills, identify implement-spec as the skill the user must explicitly invoke in the fresh session. Its delegated skills remain its responsibility.
+In Suggested skills, list only implement-spec.
 
 Return the handoff's absolute path and flag anything still missing for implementation.
 ```
 
-Resolve implementation blockers before starting the new agent. The handoff should carry context that would otherwise be lost, with pointers to the maintained artifacts.
+Resolve implementation blockers with the planning agent before moving to a fresh session. The handoff should carry context that would otherwise be lost, with pointers to the maintained artifacts.
 
-## 5. Start an agent with a clean context
+## 5. Open a fresh session and give it the handoff
 
-Start a fresh agent in the repository and explicitly invoke the skill with this prompt, replacing the placeholder with the path returned above. In Codex CLI or IDE, use `$implement-spec` on the first line.
+You open a new agent session in the repository with a clean context. Give it the handoff by submitting this prompt yourself, replacing the placeholder with the path returned above. In Codex CLI or IDE, use `$implement-spec` on the first line.
 
 ```text
 /implement-spec
